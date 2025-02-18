@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Layout</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+         .container {
+            display: grid;
+            grid-template-areas: "header header"
+                                  "nav nav"
+                                  "vnav main"
+                                  "footer footer";
+            grid-template-columns: 200px auto;
+            grid-template-rows: 80px 60px auto 80px;
+            height: 100vh;
+           
+        }
+       
+
+        /* Header */
+        .header {
+            grid-area: header;
+            background: lightcoral;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            grid-column: span 2;
+        }
+
+        .logo {
+
+            height: 80px;
+            width: 100px;
+            background: url("") no-repeat center;
+            background-size: contain;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            margin-right: 0px;
+            border-radius: 5px;
+        }
+        .logoImage{
+            height: 40px;
+            width: 40px;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            width: 50%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            background: lightblue;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+
+        /* Navigation Sidebar (Left) */
+        .sidebar {
+            background: lightseagreen;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            grid-area: vnav;
+          
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            background: lightgreen;
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+            height: 70px;
+           
+        }
+        .sidebar a:hover{
+            background-color: black;
+        }
+
+        /* Navigation Bar (Below Header) */
+        .navbar {
+            display: flex;
+            background: #c5d8a4;
+            padding: 10px;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+            grid-area: nav;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            background:lightseagreen;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .navbar a:hover {
+            background: #3a6123;
+        }
+        /* Dropdown on Hover */
+        .dropdown-container {
+            position: relative;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: rgb(51, 165, 203);
+            padding: 10px;
+            width: 180px;
+            top: 40px;
+            left: 0;
+            border-radius: 5px;
+        }
+        .dropdown-container:hover .dropdown {
+            display: block;
+        }
+        .dropdown a {
+            display: block;
+            padding: 5px;
+            color: purple;
+            text-decoration: none;
+        }
+        /* Main Content */
+        .main {
+            background: #eaf3d9;
+           
+            /* padding: 20px; */
+            height: 700px;
+             grid-area: main;
+             overflow-y: scroll; 
+        }
+        .grid-container{
+            margin-left: 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            overflow-y: scroll;
+            justify-content: space-evenly;
+            align-items: center;    
+        }
+        .card {
+            background: #27408b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            height: 100px;
+            width: 300px;
+            padding: 20px;
+        }
+        .book-now {
+            background: orange;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        /* Footer */
+        .footer {
+            background: #27408b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            gap: 10px;
+           grid-area: footer;     
+        }
+        .footer img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img class="logoImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTveZkAQc6Qo6An9eAoDAD7GEJMCEjlva8VB1hsDQJUapLlWgHwQmujOhLR-pge_PYZagI&usqp=CAU" alt=""> 
+                <label>SHOPEASY</label></div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search here">
+                <button>Go</button>
+            </div>
+        </header>
+
+        <!-- Horizontal Navbar Below Header -->
+        <nav class="navbar">
+            <div class="dropdown-container">
+                <a href="#">HOME</a>
+                <div class="dropdown">
+                    <a href="#">SHOP</a>
+                    <h2>Welcome to ShopEase</h2>
+                    <p>Explore all types of shopping categories here.</p>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <a href="#">SHOP</a>
+                <div class="dropdown">
+                    <h2>Shop Categories</h2>
+                     <p>Find products for Men, Women, and Kids.</p>
+                     <a href="#">Men</a>
+                     <a href="#">Women</a>
+                     <a href="#">Kids</a>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <a href="#">OFFER</a>
+                <div class="dropdown">
+                    <h2>Best Deals</h2>
+        <p>Check out the latest discounts and offers.</p>
+        <a href="#">latest offers</a>
+        <a href="#">discount</a>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <a href="#">CONTACT</a>
+                <div class="dropdown">
+                    <h2>Contact Us</h2>
+        <p>Email: support@shopease.com</p>
+        <p>Phone: +123 456 7890</p>
+                </div>
+            </div>
+            
+     </nav>
+
+        <!-- Left Sidebar (Vertical Links) -->
+        <nav class="sidebar">
+            <a href="https://www.flipkart.com/">flipkart</a>
+            <a href="https://www.bing.com/ck/a?!&&p=fbe0170e93df1b020e540f43c0f2999c534c0bd4afdd9a4c1a9ef1cff8ec71a3JmltdHM9MTczOTMxODQwMA&ptn=3&ver=2&hsh=4&fclid=0ad43572-9fb8-63ab-09eb-21729e0a625f&psq=amazon&u=a1aHR0cDovL3d3dy5hbWF6b24uaW4&ntb=1">Amazon</a>
+            <a href="https://blinkit.com/">blinkit</a>
+            <a href="https://www.zomato.com/">zomato</a>
+            <a href="https://www.swiggy.com/">swiggy</a>
+            <a href="https://www.shopsy.in/">shopsy</a>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main">
+            <div class="grid-container">
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+                <div class="card">Card information <button class="book-now">Book Now</button></div>
+            </div>
+        </div>
+
+       <footer class="footer">
+        <a href="https://in.linkedin.com/" target="_blank">
+            <img src="https://th.bing.com/th?id=ODLS.fc619bab-a786-4b75-8669-6881202d98da&w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2" alt="">
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+            <img src="https://th.bing.com/th?id=ODLS.7e9375d5-26a4-4702-bb17-c140827dc762&w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2" alt="">
+        </a>
+        <a href="https://www.facebook.com/" target="_blank">
+            <img src="https://th.bing.com/th?id=ODLS.ed551f5f-86b4-4f3c-b131-c5f6234517b7&w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2" alt="">
+        </a>
+
+       </footer>
+        
+    </div>
+</body>
+</html>
